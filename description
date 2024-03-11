@@ -1,0 +1,27 @@
+
+This code is a simple chat application implemented in Java with Spring Boot for the backend and JavaScript for the front end. Let's break down the project:
+
+Backend (Java/Spring Boot):
+ChatMessage Entity (com.chat.app.chat.entites.ChatMessage):
+1)Represents a chat message with fields like content, sender, type, timestamp, and whether the user is typing or not.
+2)Utilizes Lombok annotations for constructors and builders.
+MessageType Enum (com.chat.app.chat.MessageType):
+1)enumerates messages: CHAT, JOIN, LEAVE, TYPING.
+ChatController (com.chat.app.chat.ChatController):
+1)Handles WebSocket message mappings for sending messages, typing indicators, adding users, and removing users.
+2)Uses @MessageMapping to map WebSocket messages to methods.
+3)Utilizes @SendTo to send messages to specific WebSocket destinations.
+WebSocketConfig (com.chat.app.Config.WebSocketConfig):
+1)Configures WebSocket endpoints and message brokers.
+WebSocketEventListener (com.chat.app.Config.WebSocketEventListener):
+
+
+Overall Workflow:
+1)Users connect to the chat application by providing a username.
+2)Upon connection, WebSocket connection is established between the client and server.
+3)Users can send chat messages, which are sent to the server via WebSocket.
+4)Typing indicators are sent to the server when users start or stop typing.
+5)Server broadcasts messages to all connected users.
+6)Users receive messages and display them in the chat interface.
+7)Users can disconnect from the chat, and leave messages are broadcasted to other users.
+This project provides a basic framework for a real-time chat application with functionalities like sending messages, typing indicators, user joining/leaving notifications, and WebSocket event handling.
